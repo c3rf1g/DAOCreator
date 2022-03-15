@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../nodeCompiler/.idea/nodeCompiler.iml" filepath="$PROJECT_DIR$/../nodeCompiler/.idea/nodeCompiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../nodeHardhat/.idea/nodeHardhat.iml" filepath="$PROJECT_DIR$/../nodeHardhat/.idea/nodeHardhat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/votingCreator.iml" filepath="$PROJECT_DIR$/.idea/votingCreator.iml" />
+    </modules>
+  </component>
+</project>
