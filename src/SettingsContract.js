@@ -18,47 +18,12 @@ const SettingsContract = (props) => {
                         <input className="SelectContractErc20" type="checkbox" id="erc20" onClick={() => setContractSelected([true, false])}/>
                         ERC20
                     </label>
-                    {
-                        contractSelected[0] ?
-                            <div>
-                                <div>
-                                    Token name
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    Amount ERC token
-                                    <input placeholder="Amount ERC20 token" type="number" min="1"/>
-                                </div>
-                            </div>
-                        :
-                            <div></div>
-                    }
                 </div>
                 <div>
                     <label>
                         <input className="SelectContractErc721" type="checkbox" id="erc721" onClick={() => setContractSelected([false, true])}/>
                         ERC721
                     </label>
-                    {
-                        contractSelected[1] ?
-                            <div>
-                                <div>
-                                    DAO Token name
-                                    <input type="text"/>
-                                </div>
-                                <div>
-                                    Amount DAO's token
-                                    <input placeholder="Amount" type="number" min="1"/>
-                                </div>
-                                <div>
-                                    ERC20 token address
-                                    <input placeholder="ERC20 token address" type="number" min="1"/>
-                                </div>
-                            </div>
-                            :
-                            <div></div>
-                    }
-
                 </div>
                 <SetTemplateButton setWantToSetTemplate={props.setWantToSetTemplate}/>
             </div>

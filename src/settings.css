@@ -9,7 +9,7 @@ body {
     background-color: hotpink;
     margin-top: 5vh;
     width: 200px;
-    min-height: 400px;
+    min-height: 100px;
     border-radius: 15px;
     margin-left: 10vw;
     margin-bottom: 7vh;
@@ -43,7 +43,7 @@ input[type="number"]::-webkit-inner-spin-button {
     vertical-align:top;
     margin-left: 5vw;
     display: inline-block;
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
 
 .CodeForm {
@@ -51,7 +51,7 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: white;
     width: 600px;
     overflow-y: scroll;
-    max-height: 600px;
+    max-height: 500px;
 }
 
 .LeftPanel {
@@ -74,7 +74,7 @@ input[type="number"]::-webkit-inner-spin-button {
     text-align: center;
     background-color: hotpink;
     width: 200px;
-    height: 400px;
+    min-height: 400px;
     border-radius: 15px;
     margin-left: 10vw;
     margin-bottom: 7vh;
