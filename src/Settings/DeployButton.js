@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {SimpleStorageContact} from "./ERC20Template";
 import * as wrapper from 'solc/wrapper';
 import Web3 from "web3";
 

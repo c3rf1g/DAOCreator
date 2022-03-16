@@ -5,8 +5,8 @@ import Prism from "prismjs"
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
-import {ERC20Template} from "./ERC20Template"; //Example style, you can use another
-import {ERC721Template} from "./ERC721Template"
+import {ERC20Template} from "./ContractTemplates/ERC20Template"; //Example style, you can use another
+import {ERC721Template} from "./ContractTemplates/ERC721Template"
 import DeployedInfoBlock from "./DeployedInfoBlock";
 const SmartContract = (props) => {
     const [code, setCode] = React.useState(

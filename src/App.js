@@ -1,12 +1,12 @@
 import Web3 from 'web3';
-import SettingsContract from "./SettingsContract";
+import SettingsContract from "./Settings/SettingsContract";
 import SmartContract from "./SmartContract"
-import AdditionSettingsContract from "./AdditionSettingsContract";
-import DeployButton from "./DeployButton";
-import CompileButton from "./CompileButton";
+import AdditionSettingsContract from "./Settings/AdditionSettingsContract";
+import DeployButton from "./Settings/DeployButton";
+import CompileButton from "./Settings/CompileButton";
 import React, {useEffect, useState} from "react";
 import {Routes, Route, BrowserRouter as Router, Switch} from 'react-router-dom'
-import DaoPage from "./DAOPage";
+import DaoPage from "./DAOPage/DAOPage";
 import DeployedInfoBlock from "./DeployedInfoBlock";
 function App() {
     const [compiled, setCompiled] = useState(false)
@@ -59,7 +59,7 @@ function App() {
                             />
                         </div>)
                     }/>
-                    <Route exact path="/:id" component={DaoPage}/>
+                    <Route exact path="/:address" component={DaoPage}/>
                 </Switch>
 
             </Router>

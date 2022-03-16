@@ -1,0 +1,8 @@
+.ConnectWallet {
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    background-color: lightgreen;
+    border: 1px;
+    border-radius: 15px;
+}
