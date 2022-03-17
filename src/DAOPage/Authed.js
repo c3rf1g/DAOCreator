@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import "./DAOPage.css"
 
 function Authed() {
-    return null;
+
+    return <div style={{backgroundColor: "white"}}>VSE OK)</div>;
 }
 
 const Auth = () => {
@@ -10,10 +11,12 @@ const Auth = () => {
     const Auth =  () => {
         if (window.ethereum) {
             const ethereum = window.ethereum
+
             ethereum
                 .request({ method: 'eth_requestAccounts' })
                 .then((r) => {
                     console.log(r[0])
+                    localStorage.setItem("authed", true)
                     setAuth(true)
                 })
                 .catch((err) => {
@@ -31,7 +34,7 @@ const Auth = () => {
     return (
         <div>
             {
-                auth ?
+                auth || localStorage.getItem('authed')?
                     <Authed/>
                     :
                     <div className="Button">
