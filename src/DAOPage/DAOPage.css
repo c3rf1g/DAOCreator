@@ -15,3 +15,12 @@
     height: 100vh;
     width: 100vw;
 }
+
+.ErrorMessage {
+    font-size: 50px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    height: 100vh;
+    width: 100vw;
+}
