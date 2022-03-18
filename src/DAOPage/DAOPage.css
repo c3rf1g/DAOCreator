@@ -24,3 +24,35 @@
     height: 100vh;
     width: 100vw;
 }
+
+.MainDaoPage {
+    font-size: 50px;
+    text-align: center;
+    display: table-cell;
+    padding-top: 10vh;
+    height: 100vh;
+    width: 100vw;
+}
+
+.CreateVoteButton {
+    font-family: "GT Eesti Pro Display", serif;
+    background-color: hotpink;
+    border: 0;
+    border-radius: 25px;
+    font-size: 50px;
+    height: 70px;
+    width: 300px;
+    transition: 0.3s;
+}
+
+.CreateVoteButton:hover {
+    background-color: #ff3e9c;
+}
+
+.voteNameInput {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: "GT Eesti Pro Display", serif;
+    font-size: 30px;
+    height: 35px;
+}

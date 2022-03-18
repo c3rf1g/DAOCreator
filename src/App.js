@@ -61,7 +61,6 @@ function App() {
                     }/>
                     <Route exact path="/:address" component={DaoPage}/>
                 </Switch>
-
             </Router>
         </div>
   );

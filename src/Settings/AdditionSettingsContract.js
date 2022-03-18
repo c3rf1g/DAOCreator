@@ -75,24 +75,18 @@ const AdditionSettingsContract = (props) => {
                                 </option>)
                             )
                         }
-
                     </select>
-
                     :
                     <div></div>
             }
-            {/*[selectedContract][indexConstructor]*/}
             <div className="DeployArguments">
-
                 {
-
                     props.compiled && selectedContract !== ""?
                         abis[selectedContract][indexConstructor] ?
                             abis[selectedContract][indexConstructor]['inputs'].map(item => (
                                 <div key={JSON.stringify(item)}>{item['name']}
                                     <input id={item['name']} onChange={(e) => checkFill(e)} placeholder={item['internalType']}/>
                                 </div>
-
                                 )
                             )
                             :
