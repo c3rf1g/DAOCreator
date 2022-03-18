@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Web3 from "web3";
-
+import LinearProgress from '@mui/material/LinearProgress';
 const Vote = (props) => {
     const [selectedButton, setSelectedButton] = useState(0)
     const [voted, setVoted] = useState(false)
@@ -305,23 +305,79 @@ const Vote = (props) => {
     const [firstAmount, setFirstAmount] = useState(0)
     const [secondAmount, setSecondAmount] = useState(0)
     const [totalSupply, setTotalSupply] = useState(0)
-    const contract = new web3.eth.Contract(abi, "0x75E760166415aD168De3f7D89A3d37E5752DfCf7")
+    const [statusVote, setStatusVote] = useState("")
+    console.log(props.Dao)
+    const contract = new web3.eth.Contract(abi, props.Dao)
+    useEffect(() => {
+        console.log(statusVote)
+    }, [statusVote])
     useEffect(() => {
         contract.methods.getUserStatus(props.vote.id, localStorage.getItem("address")).call().then(r => {
             console.log(r)
+            console.log(localStorage.getItem("address"))
             setVoted(r)
         })
+        contract.methods.getInfoAboutVote(props.vote.id, "field1").call().then(r => {
+            console.log(r)
+            setFirstAmount(r)
+        })
+        contract.methods.getInfoAboutVote(props.vote.id, "field2").call().then(r => {
+            console.log(r)
+            setSecondAmount(r)
+        })
+        contract.methods.getTotalSupply().call().then(r => {
+            setTotalSupply(r)
+        })
+        contract.methods.getInfoAboutVote(props.vote.id, "status").call().then(res => {
+            console.log(res)
+            if (res === "1") {
+                console.log(res)
+                setStatusVote("field 1 win")
+            } else {
+                if (res === "2"){
+                    setStatusVote("field 2 win")
+                } else if (res === "3" ){
+                    setStatusVote("nichiya")
+                }
+            }
+            }
+        )
     }, [voted])
 
     const sendVote =  () => {
         console.log("SAD")
         contract.methods.setVote(props.vote.id, selectedButton).send({
             from: localStorage.getItem('address'),
+            to: props.Dao,
             gas: "20000000"
-        }).then(async (r) =>  {
-            setFirstAmount(await contract.methods.getInfoAboutVote(props.vote.id, "field1").call())
-            setSecondAmount(await contract.methods.getInfoAboutVote(props.vote.id, "field2").call())
-            setTotalSupply(await contract.methods.getInfoAboutVote(props.vote.id, "amountVoted").call())
+        }).then( r =>  {
+            contract.methods.getInfoAboutVote(props.vote.id, "status").call().then(res => {
+                if (res === 1) {
+                    setStatusVote("field 1 win")
+                } else {
+                    if (res === 2){
+                        setStatusVote("field 2 win")
+                    } else if (res ===3 ){
+                        setStatusVote("nichiya")
+                    }
+                }
+                }
+            )
+            console.log(r)
+
+            contract.methods.getInfoAboutVote(props.vote.id, "field1").call().then(r => {
+                console.log(props.vote.id)
+                console.log(r)
+                 setFirstAmount(r)
+            })
+            contract.methods.getInfoAboutVote(props.vote.id, "field2").call().then(r => {
+                console.log(r)
+                 setSecondAmount(r)
+            })
+            contract.methods.getTotalSupply().call().then(r => {
+                 setTotalSupply(r)
+            })
+
             setVoted(true)
         })
 
@@ -369,12 +425,12 @@ const Vote = (props) => {
                         </div>
                         :
                         <div>
+                            <div style={{color: "green"}}>{statusVote}</div>
                             <div>Total supply {totalSupply}</div>
-                            <div>First field {firstAmount}</div>
-                            <div>Second field {secondAmount}</div>
+                            <div>First field <LinearProgress variant="determinate" value={Math.round(firstAmount * 10000 / totalSupply) / 100  }/>{Math.round(firstAmount * 10000 / totalSupply) / 100  } % </div>
+                            <div>Second field <LinearProgress variant="determinate" value={Math.round(secondAmount * 10000 / totalSupply) /100 }/>{Math.round(secondAmount * 10000 / totalSupply) /100 } %</div>
                         </div>
                 }
-
             </div>
         </div>
     );

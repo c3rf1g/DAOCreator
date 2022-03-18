@@ -53,12 +53,16 @@ contract Airdrop is Ownable{
         return erc20.balanceOf(_owner);
     }
 
+    function getUserStatus (uint256 voteId, address user) public view returns (bool) {
+        return usersVoted[voteId][user];
+    }
+
     function doAirdropByList (address[] memory addresses, uint256 amount) public onlyOwner {
         IERC20 erc20 = IERC20(token);
         for (uint i = 0; i < addresses.length; i++) {
             DAOUsers[addresses[i]] = true;
             erc20.transfer(addresses[i], amount);
-            totalSupply += amount;
+            totalSupply += erc20.balanceOf(addresses[i]);
         }
     }
 
@@ -87,14 +91,15 @@ contract Airdrop is Ownable{
             }
         }
         return votesInfo[voteId]['status'];
-
     }
+
     function createVote () public {
         require(DAOUsers[msg.sender], "No access");
         votesInfo[getCountVotes()]["status"] = 0;
         votesInfo[getCountVotes()]["amountVoted"] = 0;
         votesInfo[getCountVotes()]["field1"] = 0;
         votesInfo[getCountVotes()]["field2"] = 0;
+        countVotes += 1;
     }
 
     function getInfoAboutVote (uint256 voteId, string memory infoType) public view returns (uint256){
@@ -124,15 +129,11 @@ contract Airdrop is Ownable{
         return owner();
     }
 
-    constructor (string memory _name, address[] memory addresses, address _token, uint256 amountAirdropToken) {
+    constructor (string memory _name, address[] memory addresses, address _token) {
         name = _name;
         token = _token;
         setOwner(msg.sender);
-//        doAirdropByList(addresses, amountAirdropToken);
     }
-
 }
-
-
 
 `

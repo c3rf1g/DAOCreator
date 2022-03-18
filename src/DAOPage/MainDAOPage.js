@@ -3,16 +3,16 @@ import CreateVote from "./CreateVote";
 import Vote from "./Vote";
 import VoteList from "./VoteList";
 
-const MainDAOPage = () => {
+const MainDAOPage = (props) => {
     const [votes, setVotes] = useState(JSON.parse(localStorage.getItem('votes')) || [])
     return (
         <div>
             You are in DAO!
-            <CreateVote votes={votes} setVotes={setVotes}/>
+            <CreateVote Dao={props.DAOAddress} votes={votes} setVotes={setVotes}/>
             <VoteList>
                 {
                     votes.map((vote, index) => (
-                        <Vote key={vote + index} index={index} vote={vote} />
+                        <Vote Dao={props.DAOAddress} key={vote + index} index={index} vote={vote} />
                     ))
                 }
             </VoteList>

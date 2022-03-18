@@ -310,15 +310,16 @@ const CreateVote = (props) => {
                 }
             ]
             const web3 = new Web3(Web3.givenProvider)
-            const contract = new web3.eth.Contract(abi, "0x75E760166415aD168De3f7D89A3d37E5752DfCf7")
+            const contract = new web3.eth.Contract(abi, props.Dao)
 
             console.log(input)
-
+            const id = await contract.methods.getCountVotes().call()
+            console.log(id)
             localStorage.setItem('votes', JSON.stringify([...props.votes, {
                 voteName: input,
                 field1: field1,
                 field2: field2,
-                id: await contract.methods.getCountVotes().call()
+                id: id
             }]))
             console.log(await contract.methods.getOwner().call())
             console.log(await contract.methods.getCountVotes().call())
@@ -331,7 +332,7 @@ const CreateVote = (props) => {
                 voteName: input,
                 field1: field1,
                 field2: field2,
-                id: await contract.methods.getCountVotes().call()
+                id: id
             }])
         }
     }

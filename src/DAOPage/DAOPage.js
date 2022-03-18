@@ -8,7 +8,6 @@ const DaoPage = (props) => {
     const address = props.match.params.address
     return (
         <div>
-
             <Auth DAOAddress={address}/>
         </div>
     );
