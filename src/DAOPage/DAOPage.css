@@ -38,6 +38,8 @@
     font-family: "GT Eesti Pro Display", serif;
     background-color: hotpink;
     border: 0;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
     border-radius: 25px;
     font-size: 50px;
     height: 70px;
@@ -55,4 +57,51 @@
     font-family: "GT Eesti Pro Display", serif;
     font-size: 30px;
     height: 35px;
+}
+
+.Field1 {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: "GT Eesti Pro Display", serif;
+    font-size: 30px;
+    height: 35px;
+}
+
+.Field2 {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: "GT Eesti Pro Display", serif;
+    font-size: 30px;
+    height: 35px;
+}
+.VotingCard {
+    width: 400px;
+    border-radius: 25px;
+    height: 300px;
+    border:  solid 4px black;
+    margin: 15px;
+    text-align: center;
+}
+
+.obertka {
+    text-align: center;
+    display: inline-block;
+}
+
+.OptionButton {
+    height: 40px;
+    width: 250px;
+    border-radius: 5px;
+    border: solid 2px;
+}
+
+.SendButton {
+    font-size: 30px;
+    font-family: "GT Eesti Pro Display", serif;
+    border-radius: 25px;
+    background-color: #3bcc3b;
+}
+
+.SendButton:hover {
+    background-color: #24fc24;
 }

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import CreateVote from "./CreateVote";
+import Vote from "./Vote";
+import VoteList from "./VoteList";
 
 const MainDAOPage = () => {
     const [votes, setVotes] = useState(JSON.parse(localStorage.getItem('votes')) || [])
@@ -7,11 +9,13 @@ const MainDAOPage = () => {
         <div>
             You are in DAO!
             <CreateVote votes={votes} setVotes={setVotes}/>
-            {
-                votes.map(vote => (
-                    <div key={vote + votes.indexOf(vote)}>{vote}</div>
-                ))
-            }
+            <VoteList>
+                {
+                    votes.map((vote, index) => (
+                        <Vote key={vote + index} index={index} vote={vote} />
+                    ))
+                }
+            </VoteList>
         </div>
     );
 };
