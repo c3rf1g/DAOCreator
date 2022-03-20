@@ -12,11 +12,13 @@ const AdditionSettingsContract = (props) => {
     if (!props.compiled && init)
         setInit(false)
     if (props.compiled && !init){
+        setArg({})
         setResponse(JSON.parse(localStorage.getItem("response")))
         setAbis(JSON.parse(localStorage.getItem('abis')))
         setSelectedContract(Object.entries(JSON.parse(localStorage.getItem('abis')))[0][0])
         setInit(true)
     }
+
 
     const checkFill = (e) => {
         console.log(e.target.placeholder)

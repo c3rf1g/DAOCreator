@@ -8,6 +8,7 @@ import React, {useEffect, useState} from "react";
 import {Routes, Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import DaoPage from "./DAOPage/DAOPage";
 import DeployedInfoBlock from "./DeployedInfoBlock";
+import AirDropPage from "./AirdropPage/AirDropPage";
 function App() {
     const [compiled, setCompiled] = useState(false)
     const [edited, setEdited] = useState(false)
@@ -16,6 +17,8 @@ function App() {
     const [whichContractSelected, setWhichContractSelected] = useState("")
     const [deployed, setDeployed] = useState(false)
     const [deployedList, setDeployedList] = useState([])
+    document.getElementsByTagName("body")[0].style.backgroundColor = "black"
+
     useEffect(() => {
         if (edited === true) {
             setCompiled(false)
@@ -31,37 +34,32 @@ function App() {
     }, [deployed])
   return (
         <div className="App">
-            <Router>
-                <Switch>
-                    <Route exact path="/" render={
-                        () => (<div>
-                            <div className="LeftPanel">
-                                <SettingsContract setWantToSetTemplate={setWantToSetTemplate}
-                                                  setWhichContractSelected={setWhichContractSelected}/>
-                                <AdditionSettingsContract setCompiled={setCompiled} compiled={compiled}
-                                                          setCompiledAndSelected={setCompiledAndSelected}
-                                                          compiledAndSelected={compiledAndSelected}>
-                                    <CompileButton setCompiled={setCompiled}/>
-                                    {
-                                        compiledAndSelected ?
-                                            <div>
-                                                <DeployButton setDeployed={setDeployed}/>
-                                            </div>
-                                            :
-                                            <div></div>
-                                    }
-                                </AdditionSettingsContract>
+            <div className="LeftPanel">
+                <SettingsContract setWantToSetTemplate={setWantToSetTemplate}
+                                  setWhichContractSelected={setWhichContractSelected}
+                                  setCompiledAndSelected={setCompiledAndSelected}
+                />
+                <AdditionSettingsContract setCompiled={setCompiled} compiled={compiled}
+                                          setCompiledAndSelected={setCompiledAndSelected}
+                                          compiledAndSelected={compiledAndSelected}
+                                          wantToSetTemplate={wantToSetTemplate}
+                >
+                    <CompileButton setCompiled={setCompiled}/>
+                    {
+                        compiledAndSelected?
+                            <div>
+                                <DeployButton setDeployed={setDeployed}/>
                             </div>
-                            <SmartContract setEdited={setCompiled} wantToSetTemplate={wantToSetTemplate}
-                                           whichContractSelected={whichContractSelected}
-                                           setWantToSetTemplate={setWantToSetTemplate}
-                                           deployedList={deployedList}
-                            />
-                        </div>)
-                    }/>
-                    <Route exact path="/:address" component={DaoPage}/>
-                </Switch>
-            </Router>
+                            :
+                            <div></div>
+                    }
+                </AdditionSettingsContract>
+            </div>
+            <SmartContract setEdited={setCompiled} wantToSetTemplate={wantToSetTemplate}
+                           whichContractSelected={whichContractSelected}
+                           setWantToSetTemplate={setWantToSetTemplate}
+                           deployedList={deployedList}
+            />
         </div>
   );
 }

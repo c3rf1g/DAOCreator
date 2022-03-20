@@ -25,7 +25,8 @@ const SettingsContract = (props) => {
                         ERC721
                     </label>
                 </div>
-                <SetTemplateButton setWantToSetTemplate={props.setWantToSetTemplate}/>
+                <SetTemplateButton setCompiledAndSelected={props.setCompiledAndSelected}
+                                   setWantToSetTemplate={props.setWantToSetTemplate}/>
             </div>
         </div>
     );
