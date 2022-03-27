@@ -11,7 +11,7 @@ const Routers = () => {
         <Routes >
             <Route exact path="/compiler" element={<App/>}/>
             <Route path="/airdrop" element={<AirDropPage/>}/>
-            <Route path="/voting" element={<div>ads</div>}/>
+            {/*<Route path="/voting" element={<div>ads</div>}/>*/}
             <Route exact path="/:address" element={<DaoPage/>}/>
         </Routes>
     );
